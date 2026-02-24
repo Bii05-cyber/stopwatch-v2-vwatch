@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.cdnfonts.com/css/digital-7-mono" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:transparent;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.widget{
+  position:relative;
+  width:350px;
+  aspect-ratio:1/1;
+  background:url("clock2.jpg") no-repeat center/cover;
+}
+
+.display{
+  position:absolute;
+  top:55px;
+  left:28px;
+  width:140px;
+  text-align:center;
+  font-family:'Digital-7 Mono', monospace;
+  color:#ff2a2a;
+  text-shadow:0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000;
+  transform: skewX(-25deg) rotate(-30deg);
+}
+
+#clock{
+  font-size:26px;
+  letter-spacing:2px;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div class="widget">
+   <div class="display">
+     <div id="clock">00:00</div>
+   </div>
+ </div>
+
+
+<script>
+function updateClock() {
+  const now = new Date();
+  let h = String(now.getHours()).padStart(2,"0");
+  let m = String(now.getMinutes()).padStart(2,"0");
+
+  document.getElementById("clock").textContent = `${h}:${m}`;
+}
+
+// Update immediately and every 30s (minutes rarely change exactly on the second)
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
